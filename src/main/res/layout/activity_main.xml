@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="mainVM"
+            type="com.jack.cartest.vm.MainViewModel" />
+
+        <import type="android.car.VehicleAreaSeat" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->mainVM.queryCarInfoEvent()}"
+            android:text="获取信息" />
+
+        <Button
+            android:id="@+id/buttonInc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->mainVM.autoSetHvacTemp(VehicleAreaSeat.SEAT_ROW_1_LEFT, true)}"
+            android:text="温度加一度" />
+
+        <Button
+            android:id="@+id/buttonDec"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->mainVM.autoSetHvacTemp(VehicleAreaSeat.SEAT_ROW_1_LEFT, false)}"
+            android:text="温度减一度" />
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@={mainVM.carInfo}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </LinearLayout>
+</layout>
